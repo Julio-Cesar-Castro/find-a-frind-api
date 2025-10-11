@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryOrganizationRepository } from '../repositories/in-memory/in-memory-organization-repository.ts'
-import { CreateOrganizationUseCase } from './create.ts'
+import { CreateOrganizationUseCase } from './register.ts'
 import { randomUUID } from 'node:crypto'
 
 let organizationRepository: InMemoryOrganizationRepository
@@ -12,27 +12,40 @@ describe('Unit Test Organization', () => {
     sut = new CreateOrganizationUseCase(organizationRepository)
   })
 
-  it('should create and organization', async () => {
+  it('should create a organization', async () => {
     const { organization } = await sut.execute({
       id: randomUUID(),
-      name: 'Org amigos',
+      name_responsible: 'Org amigos',
       address: 'Rua 1',
       district: 'São Paulo',
       number: 124,
       phone: '12345678910',
       zipcode: 13327464,
+      city: 'SP',
+      cnpj: 52702990000103,
+      created_at: String(new Date()),
+      email: 'org.example@example.com',
+      password: '12345678',
+      role: 'ADMIN',
     })
 
     expect(organization).toEqual(
       expect.objectContaining({
         id: expect.any(String),
-        name: 'Org amigos',
+        name_responsible: 'Org amigos',
         address: 'Rua 1',
         district: 'São Paulo',
         number: 124,
         phone: '12345678910',
         zipcode: 13327464,
+        city: 'SP',
+        cnpj: 52702990000103,
+        created_at: String(new Date()),
+        email: 'org.example@example.com',
+        password: '12345678',
+        role: 'ADMIN',
       }),
     )
+    expect(organization.role).toBe('ADMIN')
   })
 })

@@ -3,12 +3,18 @@ import type { OrganizationRepository } from '../repositories/organization-reposi
 
 interface CreateOrganizationRequest {
   id: string
-  name: string
+  name_responsible: string
+  email: string
+  password: string
+  city: string
   address: string
   number: number
   district: string
   zipcode: number
   phone: string
+  created_at: string
+  cnpj: number
+  role: 'ADMIN' | 'USER'
 }
 
 interface CreateOrganizationResponse {
@@ -22,19 +28,31 @@ export class CreateOrganizationUseCase {
     address,
     district,
     id,
-    name,
+    name_responsible,
     number,
     phone,
     zipcode,
+    city,
+    cnpj,
+    created_at,
+    email,
+    password,
+    role,
   }: CreateOrganizationRequest): Promise<CreateOrganizationResponse> {
     const organization = await this.organizationRepository.create({
       address,
       district,
       id,
-      name,
+      name_responsible,
       number,
       phone,
       zipcode,
+      city,
+      cnpj,
+      created_at,
+      email,
+      password,
+      role,
     })
 
     return { organization }
