@@ -8,8 +8,8 @@
 - [ ] A listagem de todos os pets disponíveis para adoção em uma determinada cidade
 - [ ] A filtragem de pets com base em suas características (como idade, porte, etc.)
 - [ ] A visualização dos detalhes de um pet específico
-- [ ] O cadastro de uma ORG (organização)
-- [ ] O login de uma ORG no sistema
+- [x] O cadastro de uma ORG (organização)
+- [x] O login de uma ORG no sistema
 
 ## Regras de Negócio
 ### As seguintes condições devem ser implementadas:
@@ -23,8 +23,8 @@
 
 ## Tarefas
 
-- [ ] Rota para cadastrar uma ORG, garantindo que inclua endereço e número de WhatsApp
-- [ ] Rota de login para uma ORG
+- [x] Rota para cadastrar uma ORG, garantindo que inclua endereço e número de WhatsApp
+- [x] Rota de login para uma ORG
 - [ ] Rota para cadastrar um pet, garantindo que ele seja associado a uma ORG
 - [ ] Rota para listar pets, exigindo a cidade como parâmetro obrigatório
 - [ ] Implementar a funcionalidade de filtros opcionais por características dos pets na listagem
@@ -32,3 +32,63 @@
 - [ ] Garantir que o acesso de administrador da ORG seja restrito a usuários logados
 - [ ] Aplicar os princípios SOLID durante o desenvolvimento da estrutura da API
 - [ ] Criar testes para validar as funcionalidades e regras de negócio
+
+
+## Banco de Dados
+### PostgreSQL
+
+
+enum Role {
+    'ADMIN' | 'USER'
+}
+
+enum PetSize {
+    'SMALL' | 'MEDIUM' | 'BIG'
+}
+
+- User {
+    id
+    name
+    email
+    password
+    birthday
+    city
+    role
+    phone
+    created_at
+
+    id_pet - Relation N-N
+}
+
+- Organization {
+    id,
+    cnpj
+    role
+    email
+    password
+    address,
+    district,
+    city,
+    name_responsible,
+    number,
+    phone,
+    zipcode,
+    created_at
+}
+
+- Pet {
+    id
+    name
+    birthday
+    city
+    pet_size
+    description
+    requirement
+    created_at
+    updated_at
+
+    id_organization - Relation N-N
+}
+
+
+
