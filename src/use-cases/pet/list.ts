@@ -13,7 +13,7 @@ export class ListPetUseCase {
   constructor(private petRepository: PetRepository) {}
 
   async execute({ city }: ListPetRequest): Promise<ListPetResponse> {
-    const pet = await this.petRepository.listPetByCity(city)
+    const pet = await this.petRepository.findPetByCity(city)
 
     return { pet }
   }

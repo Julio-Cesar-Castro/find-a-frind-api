@@ -71,7 +71,7 @@ describe('Unit Test List Pets', () => {
       requirement: 'Ambiente amigável',
     })
 
-    const list = await petRepository.listPetByCity('Salto')
+    const list = await petRepository.findPetByCity('Salto')
 
     expect(list).toHaveLength(2)
   })
@@ -119,7 +119,7 @@ describe('Unit Test List Pets', () => {
       requirement: 'Ambiente amigável',
     })
 
-    const list = await petRepository.listPetByCity('Itu')
+    const list = await petRepository.findPetByCity('Itu')
 
     expect(list).toEqual([])
   })
