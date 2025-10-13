@@ -22,4 +22,10 @@ export class InMemoryPetRepository implements PetRepository {
 
     return pet
   }
+
+  async listPetByCity(city: string) {
+    const pet = this.items.filter((item) => item.city === city)
+
+    return pet
+  }
 }
