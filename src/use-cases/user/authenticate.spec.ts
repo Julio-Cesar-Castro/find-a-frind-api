@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { randomUUID } from 'node:crypto'
-import { InMemoryUserRepository } from '../repositories/in-memory/in-memory-user-repository.ts'
+import { InMemoryUserRepository } from '../../repositories/in-memory/in-memory-user-repository.ts'
 import { AuthenticateUserUseCase } from './authenticate.ts'
 import { hash } from 'bcrypt'
 import { UserInvalidCredentials } from '../errors/user-invalid-credentials.ts'
