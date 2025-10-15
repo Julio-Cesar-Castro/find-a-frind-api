@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { InMemoryOrganizationRepository } from '../repositories/in-memory/in-memory-organization-repository.ts'
+import { InMemoryOrganizationRepository } from '../../repositories/in-memory/in-memory-organization-repository.ts'
 import { CreateOrganizationUseCase } from './register.ts'
 import { randomUUID } from 'node:crypto'
 
