@@ -1,6 +1,7 @@
 import type { User } from '@/interfaces/user.ts'
-import type { UserRepository } from '../repositories/user-repository.ts'
+import type { UserRepository } from '../../repositories/user-repository.ts'
 import { hash } from 'bcrypt'
+import { UserAlreadyExist } from '../errors/user-already-exist.ts'
 
 interface CreateUserRequest {
   id: string
@@ -33,6 +34,12 @@ export class CreateUserUseCase {
     role,
   }: CreateUserRequest): Promise<CreateUserResponse> {
     const password_hash = await hash(password, 6)
+
+    const userAlreadyExist = await this.userRepository.findByEmail(email)
+
+    if (userAlreadyExist) {
+      throw new UserAlreadyExist()
+    }
 
     const user = await this.userRepository.create({
       birthday,
