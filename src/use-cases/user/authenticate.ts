@@ -1,5 +1,5 @@
 import type { User } from '@/interfaces/user.ts'
-import type { UserRepository } from '../repositories/user-repository.ts'
+import type { UserRepository } from '../../repositories/user-repository.ts'
 import { UserInvalidCredentials } from '../errors/user-invalid-credentials.ts'
 import { compare } from 'bcrypt'
 

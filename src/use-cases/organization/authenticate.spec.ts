@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { randomUUID } from 'node:crypto'
 import { hash } from 'bcrypt'
 import { AuthenticateOrganizatonUseCase } from './authenticate.ts'
-import { InMemoryOrganizationRepository } from '../repositories/in-memory/in-memory-organization-repository.ts'
+import { InMemoryOrganizationRepository } from '../../repositories/in-memory/in-memory-organization-repository.ts'
 import { OrganizationInvalidCredentials } from '../errors/organization-invalid-credentials.ts'
 
 let organizationRepository: InMemoryOrganizationRepository

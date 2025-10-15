@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { randomUUID } from 'node:crypto'
-import { InMemoryPetRepository } from '../repositories/in-memory/in-memory-pet-repository.ts'
+import { InMemoryPetRepository } from '../../repositories/in-memory/in-memory-pet-repository.ts'
 import { CreatePetUseCase } from './register.ts'
-import { InMemoryOrganizationRepository } from '../repositories/in-memory/in-memory-organization-repository.ts'
+import { InMemoryOrganizationRepository } from '../../repositories/in-memory/in-memory-organization-repository.ts'
 
 let petRepository: InMemoryPetRepository
 let organizationRepository: InMemoryOrganizationRepository

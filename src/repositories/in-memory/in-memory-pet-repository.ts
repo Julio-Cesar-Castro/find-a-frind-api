@@ -38,4 +38,19 @@ export class InMemoryPetRepository implements PetRepository {
 
     return pet
   }
+
+  async searchPetByQuery(query: string) {
+    const pet = this.items.filter(
+      (item) =>
+        item.pet_size.includes(query) ||
+        item.birthday.includes(query) ||
+        item.requirement.includes(query),
+    )
+
+    if (!pet) {
+      return null
+    }
+
+    return pet
+  }
 }

@@ -1,5 +1,5 @@
 import type { Organization } from '@/interfaces/organization.ts'
-import type { OrganizationRepository } from '../repositories/organization-repository.ts'
+import type { OrganizationRepository } from '../../repositories/organization-repository.ts'
 
 interface CreateOrganizationRequest {
   id: string

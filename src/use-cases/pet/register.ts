@@ -1,4 +1,4 @@
-import type { PetRepository } from '../repositories/pet-repository.ts'
+import type { PetRepository } from '../../repositories/pet-repository.ts'
 import type { Pet } from '@/interfaces/pet.ts'
 
 interface CreatePetRequest {

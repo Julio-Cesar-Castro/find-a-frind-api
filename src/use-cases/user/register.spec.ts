@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { randomUUID } from 'node:crypto'
-import { InMemoryUserRepository } from '../repositories/in-memory/in-memory-user-repository.ts'
+import { InMemoryUserRepository } from '../../repositories/in-memory/in-memory-user-repository.ts'
 import { CreateUserUseCase } from './register.ts'
 
 let userRepository: InMemoryUserRepository

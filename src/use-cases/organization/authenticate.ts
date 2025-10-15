@@ -1,4 +1,4 @@
-import type { OrganizationRepository } from '../repositories/organization-repository.ts'
+import type { OrganizationRepository } from '../../repositories/organization-repository.ts'
 import type { Organization } from '@/interfaces/organization.ts'
 import { compare } from 'bcrypt'
 import { OrganizationInvalidCredentials } from '../errors/organization-invalid-credentials.ts'

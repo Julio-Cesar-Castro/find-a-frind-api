@@ -8,14 +8,14 @@ let petRepository: InMemoryPetRepository
 let organizationRepository: InMemoryOrganizationRepository
 let sut: CreatePetUseCase
 
-describe('Unit Test User', () => {
+describe('Unit Test Search Pet By Query', () => {
   beforeEach(() => {
     petRepository = new InMemoryPetRepository()
     organizationRepository = new InMemoryOrganizationRepository()
     sut = new CreatePetUseCase(petRepository)
   })
 
-  it('should create a pet', async () => {
+  it('should find a pets by query', async () => {
     const organization = await organizationRepository.create({
       id: randomUUID(),
       name_responsible: 'Org amigos',
@@ -45,7 +45,43 @@ describe('Unit Test User', () => {
       requirement: 'Ambiente amigável',
     })
 
-    expect(pet.id).toEqual(expect.any(String))
-    expect(pet.organization_id).toBe(organization.id)
+    await sut.execute({
+      id: randomUUID(),
+      birthday: String(new Date('2019-02-24')),
+      city: 'Salto',
+      created_at: String(new Date()),
+      updated_at: String(new Date()),
+      description: 'Amigo dos blues',
+      name: 'Blue',
+      pet_size: '60cm',
+      organization_id: organization.id,
+      requirement: 'Agitado',
+    })
+
+    await sut.execute({
+      id: randomUUID(),
+      birthday: String(new Date('2018-02-24')),
+      city: 'Indaiatuba',
+      created_at: String(new Date()),
+      updated_at: String(new Date()),
+      description: 'Amigo do homem',
+      name: 'Ara',
+      pet_size: '60cm',
+      organization_id: organization.id,
+      requirement: 'Ambiente amigável',
+    })
+
+    const searchPetByAge = await petRepository.searchPetByQuery(
+      String(new Date('2018-02-24')),
+    )
+
+    const searchPetByPetSize = await petRepository.searchPetByQuery('60cm')
+
+    const searchPeyByRequirement =
+      await petRepository.searchPetByQuery('Agitado')
+
+    expect(searchPetByAge).toHaveLength(1)
+    expect(searchPetByPetSize).toHaveLength(2)
+    expect(searchPeyByRequirement).toHaveLength(1)
   })
 })
