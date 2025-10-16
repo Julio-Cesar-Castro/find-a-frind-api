@@ -6,13 +6,11 @@ export class InMemoryUserRepository implements UserRepository {
 
   async create(data: User) {
     const user = {
-      id: data.id,
       name: data.name,
       email: data.email,
       password: data.password,
       city: data.city,
       phone: data.phone,
-      created_at: data.created_at,
       birthday: data.birthday,
       role: data.role,
     }

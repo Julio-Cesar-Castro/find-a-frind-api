@@ -3,10 +3,11 @@ export interface Pet {
   name: string
   birthday: string
   city: string
-  pet_size: string
+  petSize: 'SMALL' | 'MEDIUM' | 'BIG'
   description: string
   requirement: string
-  organization_id: string
-  created_at: string
-  updated_at: string
+  createdAt: Date
+  updatedAt: Date
+  organizationId: string
+  userId?: string | null
 }

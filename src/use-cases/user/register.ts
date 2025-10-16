@@ -3,36 +3,32 @@ import type { UserRepository } from '../../repositories/user-repository.ts'
 import { hash } from 'bcrypt'
 import { UserAlreadyExist } from '../errors/user-already-exist.ts'
 
-interface CreateUserRequest {
-  id: string
+interface RegisterUseCaseRequest {
   name: string
   email: string
   password: string
   city: string
   phone: string
-  created_at: string
   birthday: string
   role: 'ADMIN' | 'USER'
 }
 
-interface CreateUserResponse {
+interface RegisterUseCaseResponse {
   user: User
 }
 
-export class CreateUserUseCase {
+export class RegisterUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async execute({
     birthday,
     city,
-    created_at,
     email,
-    id,
     name,
     password,
     phone,
     role,
-  }: CreateUserRequest): Promise<CreateUserResponse> {
+  }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
     const password_hash = await hash(password, 6)
 
     const userAlreadyExist = await this.userRepository.findByEmail(email)
@@ -44,9 +40,7 @@ export class CreateUserUseCase {
     const user = await this.userRepository.create({
       birthday,
       city,
-      created_at,
       email,
-      id,
       name,
       password: password_hash,
       phone,

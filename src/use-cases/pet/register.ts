@@ -1,3 +1,4 @@
+import type { Prisma } from '@prisma/client'
 import type { PetRepository } from '../../repositories/pet-repository.ts'
 import type { Pet } from '@/interfaces/pet.ts'
 
@@ -6,12 +7,13 @@ interface CreatePetRequest {
   name: string
   birthday: string
   city: string
-  pet_size: string
+  petSize: 'SMALL' | 'MEDIUM' | 'BIG'
   description: string
   requirement: string
-  organization_id: string
-  created_at: string
-  updated_at: string
+  createdAt: Date
+  updatedAt: Date
+  organizationId: string
+  userId?: string | null
 }
 
 interface CreatePetResponse {
@@ -26,25 +28,26 @@ export class CreatePetUseCase {
     name,
     birthday,
     city,
-    pet_size,
+    petSize,
     description,
     requirement,
-    organization_id,
-    created_at,
-
-    updated_at,
+    organizationId,
+    userId,
+    createdAt,
+    updatedAt,
   }: CreatePetRequest): Promise<CreatePetResponse> {
     const pet = await this.petRepository.create({
       id,
       name,
       birthday,
       city,
-      pet_size,
+      petSize,
       description,
-      organization_id,
       requirement,
-      created_at,
-      updated_at,
+      organizationId,
+      userId: userId ?? null,
+      createdAt,
+      updatedAt,
     })
 
     return { pet }

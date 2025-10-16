@@ -1,5 +1,4 @@
 export interface User {
-  id: string
   name: string
   email: string
   password: string
@@ -7,5 +6,4 @@ export interface User {
   city: string
   role: 'ADMIN' | 'USER'
   phone: string
-  created_at: string
 }

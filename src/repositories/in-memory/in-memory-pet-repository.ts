@@ -1,4 +1,4 @@
-import type { Pet } from '@/interfaces/pet.ts'
+import type { Pet } from '@prisma/client'
 import type { PetRepository } from '../pet-repository.ts'
 
 export class InMemoryPetRepository implements PetRepository {
@@ -10,12 +10,13 @@ export class InMemoryPetRepository implements PetRepository {
       name: data.name,
       birthday: data.birthday,
       city: data.city,
-      pet_size: data.pet_size,
+      petSize: data.petSize,
       description: data.description,
       requirement: data.requirement,
-      organization_id: data.organization_id,
-      created_at: data.created_at,
-      updated_at: data.updated_at,
+      organizationId: data.organizationId,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
+      userId: data.userId,
     }
 
     this.items.push(pet)
@@ -42,7 +43,7 @@ export class InMemoryPetRepository implements PetRepository {
   async searchPetByQuery(query: string) {
     const pet = this.items.filter(
       (item) =>
-        item.pet_size.includes(query) ||
+        item.petSize.includes(query) ||
         item.birthday.includes(query) ||
         item.requirement.includes(query),
     )

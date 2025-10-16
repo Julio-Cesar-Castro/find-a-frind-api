@@ -7,9 +7,9 @@ export interface Organization {
   address: string
   number: number
   district: string
-  zipcode: number
+  zipcode: string
   phone: string
-  created_at: string
+  createdAt: Date
   cnpj: number
   role: 'ADMIN' | 'USER'
 }
