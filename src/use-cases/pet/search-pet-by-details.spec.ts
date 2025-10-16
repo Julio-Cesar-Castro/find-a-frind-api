@@ -23,10 +23,10 @@ describe('Unit Test Search Pet By Query', () => {
       district: 'São Paulo',
       number: 124,
       phone: '12345678910',
-      zipcode: 13327464,
+      zipcode: '13327464',
       city: 'SP',
       cnpj: 52702990000103,
-      created_at: String(new Date()),
+      createdAt: new Date(),
       email: 'org.example@example.com',
       password: '12345678',
       role: 'ADMIN',
@@ -36,12 +36,12 @@ describe('Unit Test Search Pet By Query', () => {
       id: randomUUID(),
       birthday: String(new Date('2020-02-24')),
       city: 'Salto',
-      created_at: String(new Date()),
-      updated_at: String(new Date()),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       description: 'Amigo da vizinhança',
       name: 'Porco aranha',
-      pet_size: '80cm',
-      organization_id: organization.id,
+      petSize: 'SMALL',
+      organizationId: organization.id,
       requirement: 'Ambiente amigável',
     })
 
@@ -49,12 +49,12 @@ describe('Unit Test Search Pet By Query', () => {
       id: randomUUID(),
       birthday: String(new Date('2019-02-24')),
       city: 'Salto',
-      created_at: String(new Date()),
-      updated_at: String(new Date()),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       description: 'Amigo dos blues',
       name: 'Blue',
-      pet_size: '60cm',
-      organization_id: organization.id,
+      petSize: 'BIG',
+      organizationId: organization.id,
       requirement: 'Agitado',
     })
 
@@ -62,12 +62,12 @@ describe('Unit Test Search Pet By Query', () => {
       id: randomUUID(),
       birthday: String(new Date('2018-02-24')),
       city: 'Indaiatuba',
-      created_at: String(new Date()),
-      updated_at: String(new Date()),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       description: 'Amigo do homem',
       name: 'Ara',
-      pet_size: '60cm',
-      organization_id: organization.id,
+      petSize: 'BIG',
+      organizationId: organization.id,
       requirement: 'Ambiente amigável',
     })
 
@@ -75,7 +75,7 @@ describe('Unit Test Search Pet By Query', () => {
       String(new Date('2018-02-24')),
     )
 
-    const searchPetByPetSize = await petRepository.searchPetByQuery('60cm')
+    const searchPetByPetSize = await petRepository.searchPetByQuery('BIG')
 
     const searchPeyByRequirement =
       await petRepository.searchPetByQuery('Agitado')

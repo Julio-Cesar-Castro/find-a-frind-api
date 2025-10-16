@@ -23,10 +23,10 @@ describe('Unit Test User', () => {
       district: 'São Paulo',
       number: 124,
       phone: '12345678910',
-      zipcode: 13327464,
+      zipcode: '13327464',
       city: 'SP',
       cnpj: 52702990000103,
-      created_at: String(new Date()),
+      createdAt: new Date(),
       email: 'org.example@example.com',
       password: '12345678',
       role: 'ADMIN',
@@ -36,16 +36,16 @@ describe('Unit Test User', () => {
       id: randomUUID(),
       birthday: String(new Date('2020-02-24')),
       city: 'Salto',
-      created_at: String(new Date()),
-      updated_at: String(new Date()),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       description: 'Amigo da vizinhança',
       name: 'Porco aranha',
-      pet_size: '80cm',
-      organization_id: organization.id,
+      petSize: 'SMALL',
+      organizationId: organization.id,
       requirement: 'Ambiente amigável',
     })
 
     expect(pet.id).toEqual(expect.any(String))
-    expect(pet.organization_id).toBe(organization.id)
+    expect(pet.organizationId).toBe(organization.id)
   })
 })

@@ -1,4 +1,4 @@
-import type { Organization } from '@/interfaces/organization.ts'
+import type { Organization } from '@prisma/client'
 import type { OrganizationRepository } from '../organization-repository.ts'
 
 export class InMemoryOrganizationRepository implements OrganizationRepository {
@@ -16,7 +16,7 @@ export class InMemoryOrganizationRepository implements OrganizationRepository {
       district: data.district,
       zipcode: data.zipcode,
       phone: data.phone,
-      created_at: data.created_at,
+      createdAt: data.createdAt,
       cnpj: data.cnpj,
       role: data.role,
     }

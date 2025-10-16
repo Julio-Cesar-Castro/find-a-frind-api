@@ -20,7 +20,7 @@ describe('Unit Test Organization Login', () => {
       address: 'Rua X',
       city: 'Salto',
       cnpj: 527200980000101,
-      created_at: String(new Date()),
+      createdAt: new Date(),
       district: 'Bairro',
       email: 'organization@example.com',
       name_responsible: 'João',
@@ -28,7 +28,7 @@ describe('Unit Test Organization Login', () => {
       password: await hash('12345678', 6),
       phone: '00000000000',
       role: 'ADMIN',
-      zipcode: 13327464,
+      zipcode: '13327464',
     })
 
     const { organization } = await sut.execute({
@@ -45,7 +45,7 @@ describe('Unit Test Organization Login', () => {
       address: 'Rua X',
       city: 'Salto',
       cnpj: 527200980000101,
-      created_at: String(new Date()),
+      createdAt: new Date(),
       district: 'Bairro',
       email: 'organization@example.com',
       name_responsible: 'João',
@@ -53,7 +53,7 @@ describe('Unit Test Organization Login', () => {
       password: await hash('12345678', 6),
       phone: '00000000000',
       role: 'ADMIN',
-      zipcode: 13327464,
+      zipcode: '13327464',
     })
 
     await expect(async () =>
@@ -70,7 +70,7 @@ describe('Unit Test Organization Login', () => {
       address: 'Rua X',
       city: 'Salto',
       cnpj: 527200980000101,
-      created_at: String(new Date()),
+      createdAt: new Date(),
       district: 'Bairro',
       email: 'organization@example.com',
       name_responsible: 'João',
@@ -78,7 +78,7 @@ describe('Unit Test Organization Login', () => {
       password: await hash('12345678', 6),
       phone: '00000000000',
       role: 'ADMIN',
-      zipcode: 13327464,
+      zipcode: '13327464',
     })
 
     await expect(async () =>

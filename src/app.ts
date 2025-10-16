@@ -1,7 +1,24 @@
-import fastify, { type FastifyReply, type FastifyRequest } from 'fastify'
+import fastify from 'fastify'
+import { usersRoutes } from './http/controllers/users/routes.ts'
+import { ZodError } from 'zod'
+import { env } from './env/index.ts'
 
 export const app = fastify()
 
-app.get('/hello', async (request: FastifyRequest, reply: FastifyReply) => {
-  return reply.status(200).send({ message: 'Hello World' })
+app.register(usersRoutes)
+
+app.setErrorHandler((error, _, reply) => {
+  if (error instanceof ZodError) {
+    return reply
+      .status(400)
+      .send({ message: 'Validation error.', issues: error.issues[0]?.message })
+  }
+
+  if (env.NODE_ENV !== 'production') {
+    console.error(error)
+  } else {
+    // TODO: Here should log to an external tool Datadog/NewRelic/Sentry
+  }
+
+  return reply.status(500).send({ message: 'Internal server error' })
 })

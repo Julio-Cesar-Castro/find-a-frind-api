@@ -1,4 +1,4 @@
-import type { Pet } from '@/interfaces/pet.ts'
+import type { Pet } from '@prisma/client'
 
 export interface PetRepository {
   create(data: Pet): Promise<Pet>

@@ -25,6 +25,7 @@ model User {
   password String
   birthday String
   city     String
+  phone    String
   role     Role   @default(USER)
 
   pet Pet[]
@@ -58,7 +59,7 @@ model Pet {
   name        String
   birthday    String
   city        String
-  PetSize     PetSize @map("pet_size")
+  petSize     PetSize @map("pet_size")
   description String
   requirement String
 
